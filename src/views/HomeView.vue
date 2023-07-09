@@ -14,7 +14,7 @@
             <h1 style="font-size: 10rem!;" class="text-h4 mb-5 animate__animated animate__fadeInLeft animate__delay-1s">
               Hi, I'm <span style="color: #678EFF;">Prajwal</span></h1>
             <v-btn color="#687EFF" width="150"
-              class="mb-5 animate__animated animate__fadeInLeft animate__delay-2s">Download
+              class="mb-5 animate__animated animate__fadeInLeft animate__delay-2s" @click="download">Download
               CV</v-btn>
           </div>
         </v-col>
@@ -99,14 +99,14 @@
     </v-row>
   </section>
   <v-container id="services">
-    <h1 class="text-h4 font-weight-bold text-white mb-10">My Services</h1>
+    <h1 class="text-h4 font-weight-bold text-white mb-10 ml-5">My Services</h1>
     <v-row>
       <v-col v-for="card in cards" :key="card.title">
         <v-card class="mx-auto" width="300" color="#2e2e2e" @mouseover="card.hover = true"
           @mouseleave="card.hover = false" :class="{ 'scale-effect': card.hover }">
           <v-icon class="ml-5 text-white text-h4 mt-5">{{ card.icon }}</v-icon>
           <v-card-title class="font-weight-bold text-white">{{ card.title }}</v-card-title>
-          <v-card-text class="text-white text-justify">
+          <v-card-text class="text-white">
             <div>{{ card.content }}</div>
           </v-card-text>
           <v-card-actions>
@@ -205,6 +205,12 @@ export default defineComponent({
     scrollToSection(section) {
       const element = document.getElementById(section);
       element.scrollIntoView({ behavior: 'smooth' });
+    },
+    download () {
+      const link = document.createElement('a');
+      link.href = '@/assets/r1.pdf';
+      link.download = 'resume.pdf';
+      link.click();
     }
   }
 });
