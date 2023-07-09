@@ -160,7 +160,7 @@ export default defineComponent({
 <style>
 
 .music-note {
-  font-size: 2rem; 
+  font-size: 3rem; 
   opacity: 0.3; 
   color: #678EFF;
   animation: music-note-animation 2s linear infinite;

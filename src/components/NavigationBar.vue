@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-app-bar app color="#060606" flat dark fixed style="position: fixed;">
+    <v-app-bar app color="#131313" flat dark fixed style="position: fixed;">
       <div class="logo  py-2 px-4 text-white ml-10">
         <h1><span style="color: #687EFF;">P</span>rajwal.</h1>
       </div>
