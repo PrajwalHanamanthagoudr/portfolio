@@ -7,8 +7,7 @@
           <div class="d-flex flex-column">
             <!-- <h1 style="font-size: 2rem; opacity: 0.3; color: #808080;" v-if="hideContent === false">&#x3c;&#x2215;&#62;
             </h1> -->
-            <v-progress-linear v-if="hideContent === false" color="#678EFF" indeterminate
-              model-value="100"></v-progress-linear>
+            <v-progress-linear v-if="hideContent === false" color="#678EFF" indeterminate></v-progress-linear>
             <div class="music-note"> &#x3c;&#x2215;&#62;</div>
             <span class="text-start text-h6 mb-5 font-weight-light animate__animated animate__fadeInLeft">Full Stack
               Developer</span>
@@ -32,13 +31,13 @@
       <v-col>
         <div>
           <v-img style="background-color: #2e2e2e; border-radius: 10%;" height="400" width="400" src="@/assets/i1.jpg">
-        </v-img>
+          </v-img>
         </div>
 
       </v-col>
       <v-col>
         <h1 class="text-h4 font-weight-bold">About Me</h1>
-        <p style="color: rgb(204, 202, 202);">
+        <p style="color: rgb(204, 202, 202);" class="text-justify">
           I am Prajwal Hanamanthagoudr, a Full Stack Developer with a strong foundation in web development and Java
           programming.
           I have expertise in SQL, JDBC, Hibernate, and web technologies like HTML, CSS, and JavaScript, including
@@ -47,17 +46,17 @@
           high-quality solutions.
           I am seeking challenging opportunities to contribute my skills and drive growth in a dynamic organization.</p>
         <v-row class="mt-0 text-subtitle-1 font-weight-black">
-          <v-col class="tab relative" :class="{ 'text-blue-500': activeTab === 'skills' }" @click="showSkills">
+          <v-col class="tab relative" @click="showSkills">
             Skills
-            <v-progress-linear v-if="activeTab === 'skills'" indeterminate color="#678EFF"></v-progress-linear>
+            <v-progress-linear v-if="activeTab === 'skills'" model-value="100" color="#678EFF"></v-progress-linear>
           </v-col>
-          <v-col class="tab relative" :class="{ 'text-blue-500': activeTab === 'education' }" @click="showEducation">
+          <v-col class="tab relative" @click="showEducation">
             Education
-            <v-progress-linear v-if="activeTab === 'education'" indeterminate color="#678EFF"></v-progress-linear>
+            <v-progress-linear v-if="activeTab === 'education'" model-value="100" color="#678EFF"></v-progress-linear>
           </v-col>
-          <v-col class="tab relative" :class="{ 'text-blue-500': activeTab === 'experience' }" @click="showExperience">
+          <v-col class="tab relative" @click="showExperience">
             Experience
-            <v-progress-linear v-if="activeTab === 'experience'" indeterminate color="#678EFF"></v-progress-linear>
+            <v-progress-linear v-if="activeTab === 'experience'" model-value="100" color="#678EFF"></v-progress-linear>
           </v-col>
           <div class="underline absolute bottom-0 h-1 bg-blue-500 transition-transform"
             :style="{ 'transform': activeTabTransform }"></div>
@@ -99,6 +98,29 @@
       </v-col>
     </v-row>
   </section>
+  <v-container id="services">
+    <h1 class="text-h4 font-weight-bold text-white mb-10">My Services</h1>
+    <v-row>
+      <v-col v-for="card in cards" :key="card.title">
+        <v-card class="mx-auto" width="300" color="#2e2e2e" @mouseover="card.hover = true"
+          @mouseleave="card.hover = false" :class="{ 'scale-effect': card.hover }">
+          <v-icon class="ml-5 text-white text-h4 mt-5">{{ card.icon }}</v-icon>
+          <v-card-title class="font-weight-bold text-white">{{ card.title }}</v-card-title>
+          <v-card-text class="text-white text-justify">
+            <div>{{ card.content }}</div>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn variant="text" :href="card.website" target="_blank" color="blue">
+              Learn More
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+  <v-container id="portfolio">
+
+  </v-container>
 </template>
 
 <script>
@@ -118,7 +140,7 @@ export default defineComponent({
       hideContent: false,
       activeTab: 'skills',
       languages: [
-        { name: 'HTML', value: 88, color: "red" },
+        { name: 'HTML', value: 95, color: "red" },
         { name: 'CSS', value: 77, color: "blue" },
         { name: 'Js', value: 50, color: "yellow" },
         { name: 'Vue.js', value: 90, color: "green" },
@@ -127,7 +149,7 @@ export default defineComponent({
         { name: 'Java', value: 65, color: "#f89820" },
         { name: 'Node.js', value: 40, color: "#68a063" },
         { name: 'SQL', value: 65, color: "#00758f" },
-        { name: 'Postman', value: 50, color: "#ef5b25 " },
+        { name: 'Postman', value: 60, color: "#ef5b25 " },
         { name: 'JDBC', value: 75, color: "#00758f" },
         { name: 'Hibernate', value: 60, color: "#37474F" },
       ],
@@ -139,7 +161,30 @@ export default defineComponent({
       exp: [
         { year: '2023', company: 'Infynect Labs Pvt Ltd', Role: 'Full Stack Developer', duration: '5 monts' },
         { year: '2022', company: 'Jspiders Banglore', Role: 'Training Full Stack Development', duration: '5 monts' },
-      ]
+      ],
+      cards: [
+        {
+          title: 'Web Design',
+          icon: 'mdi-laptop',
+          content: 'I specialize in creating visually appealing and user-friendly web interfaces using HTML, CSS, JavaScript.',
+          website: ' https://prajwalhanamanthagoudr.github.io/photography/',
+          hover: false,
+        },
+        {
+          title: 'Backend Development',
+          icon: 'mdi-server',
+          content: 'I focus on building robust and scalable server-side applications using languages like Python, Java, and Node.js.',
+          website: 'https://prajwalhanamanthagoudr.github.io/Job-portal/',
+          hover: false,
+        },
+        {
+          title: 'Web Development Backend Support',
+          icon: 'mdi-cogs',
+          content: 'I provide backend support for web development projects, troubleshooting issues and optimizing performance.',
+          website: 'https://prajwalhanamanthagoudr.github.io/portfolio/',
+          hover: false,
+        },
+      ],
     }
   },
   mounted() {
@@ -230,4 +275,14 @@ export default defineComponent({
 
 .animate__fadeInRight {
   animation-name: fadeInRight;
-}</style>
+}
+
+.scale-effect {
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+.scale-effect:hover {
+  background-image: linear-gradient(to left bottom, #8c00dc, #c600ba, #e80096, #f90074, #ff0057);
+}
+</style>
