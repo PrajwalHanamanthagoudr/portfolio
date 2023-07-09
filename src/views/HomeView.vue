@@ -9,7 +9,7 @@
             </h1> -->
             <v-progress-linear v-if="hideContent === false" color="#678EFF" indeterminate
               model-value="100"></v-progress-linear>
-              <div class="music-note"> &#x3c;&#x2215;&#62;</div>
+            <div class="music-note"> &#x3c;&#x2215;&#62;</div>
             <span class="text-start text-h6 mb-5 font-weight-light animate__animated animate__fadeInLeft">Full Stack
               Developer</span>
             <h1 style="font-size: 10rem!;" class="text-h4 mb-5 animate__animated animate__fadeInLeft animate__delay-1s">
@@ -30,15 +30,23 @@
   <section style="background-color: #131313;" class="pa-16" id="about">
     <v-row class="text-white">
       <v-col>
-        <v-img style="background-color: #2e2e2e; border-radius: 10%;" height="400" width="400" src="@/assets/t1.png">
+        <div>
+          <v-img style="background-color: #2e2e2e; border-radius: 10%;" height="400" width="400" src="@/assets/i1.jpg">
         </v-img>
+        </div>
+
       </v-col>
       <v-col>
         <h1 class="text-h4 font-weight-bold">About Me</h1>
-        <p style="color: rgb(204, 202, 202);">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati nesciunt
-          accusamus quos id, doloremque odio soluta placeat doloribus suscipit asperiores, necessitatibus itaque eum vitae
-          harum labore minima veritatis voluptatem quaerat.</p>
-        <v-row class="mt-0">
+        <p style="color: rgb(204, 202, 202);">
+          I am Prajwal Hanamanthagoudr, a Full Stack Developer with a strong foundation in web development and Java
+          programming.
+          I have expertise in SQL, JDBC, Hibernate, and web technologies like HTML, CSS, and JavaScript, including
+          frameworks like Vue.js.
+          With a passion for learning and staying updated with the latest technologies, I am dedicated to delivering
+          high-quality solutions.
+          I am seeking challenging opportunities to contribute my skills and drive growth in a dynamic organization.</p>
+        <v-row class="mt-0 text-subtitle-1 font-weight-black">
           <v-col class="tab relative" :class="{ 'text-blue-500': activeTab === 'skills' }" @click="showSkills">
             Skills
             <v-progress-linear v-if="activeTab === 'skills'" indeterminate color="#678EFF"></v-progress-linear>
@@ -158,17 +166,21 @@ export default defineComponent({
 </script>
 
 <style>
-
 .music-note {
-  font-size: 3rem; 
-  opacity: 0.3; 
+  font-size: 3rem;
+  opacity: 0.3;
   color: #678EFF;
   animation: music-note-animation 2s linear infinite;
 }
 
 @keyframes music-note-animation {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .animate__animated {
@@ -218,5 +230,4 @@ export default defineComponent({
 
 .animate__fadeInRight {
   animation-name: fadeInRight;
-}
-</style>
+}</style>
