@@ -2,11 +2,11 @@
   <v-container>
     <v-app-bar app color="#131313" flat dark fixed style="position: fixed;">
       <div class="logo  py-2 px-4 text-white ml-10">
-        <h1><span style="color: #687EFF;">P</span>rajwal.</h1>
+        <h1><span style="color: #687EFF;">Pr</span>ajwal.</h1>
       </div>
       <v-spacer></v-spacer>
       <v-app-bar-nav-icon class="nav mr-6" color="white" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-btn class="menu mr-3 text-white" @click="scrollToSection(item.section)" text v-for="item in items"
+      <v-btn class="menu mr-3 text-white font-weight-bold" @click="scrollToSection(item.section)" text v-for="item in items"
         :key="item.title" :class="{ 'active': activePage === item.section }">
         {{ item.title }}
       </v-btn>
@@ -64,13 +64,13 @@ export default {
   text-underline-offset: 10px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .menu {
     display: none;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 800px) {
   .nav {
     display: none;
   }
