@@ -249,7 +249,14 @@
         >
         <v-row>
           <v-col v-for="icon in icons" :key="icon">
-            <v-btn :icon="icon" elevation="24" variant="text" color="#678EFF"></v-btn>
+            <v-btn
+              :icon="icon.name"
+              elevation="24"
+              variant="text"
+              color="#678EFF"
+              :href="icon.link"
+              target="_blank"
+            ></v-btn>
           </v-col>
         </v-row>
         <v-btn color="#687EFF" width="150" class="mt-5 text-white" @click="download"
@@ -284,7 +291,7 @@
           @click="submit"
           >Submit</v-btn
         >
-        <v-snackbar v-model="snackbar" location="top" :color=color>
+        <v-snackbar v-model="snackbar" location="bottom" :color="color">
           {{ text }}
 
           <template v-slot:actions>
@@ -316,7 +323,7 @@ export default defineComponent({
   name: "HomeView",
   components: {
     NavigationBar,
-    ModalPage
+    ModalPage,
   },
   data() {
     return {
@@ -412,15 +419,30 @@ export default defineComponent({
         },
       ],
       icons: [
-        "mdi-facebook",
-        "mdi-instagram",
-        "mdi-github",
-        "mdi-twitter",
-        "mdi-telegram",
+        {
+          link: "#",
+          name: "mdi-facebook",
+        },
+        {
+          link: "#",
+          name: "mdi-instagram",
+        },
+        {
+          link: "https://github.com/PrajwalHanamanthagoudr?tab=repositories",
+          name: "mdi-github",
+        },
+        {
+          link: "#",
+          name: "mdi-telegram",
+        },
+        {
+          link: "www.linkedin.com/in/prajwal-hanamanthagoudr-789588242",
+          name: "mdi-linkedin",
+        },
       ],
       snackbar: false,
-      text: '',
-      color:''
+      text: "",
+      color: "",
     };
   },
   mounted() {
@@ -450,15 +472,13 @@ export default defineComponent({
     },
     submit() {
       if (!this.name || !this.email || !this.message) {
-        this.color= 'red',
-        this.snackbar = true;
-        this.text = 'Enter required fields...!';
+        (this.color = "red"), (this.snackbar = true);
+        this.text = "Enter required fields...!";
       } else {
         const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email);
         if (!isValidEmail) {
-          this.color= 'red',
-          this.snackbar = true;
-          this.text = 'Invalid email address...!';
+          (this.color = "red"), (this.snackbar = true);
+          this.text = "Invalid email address...!";
         } else {
           const payload = {
             name: this.name,
@@ -466,16 +486,14 @@ export default defineComponent({
             message: this.message,
           };
           console.log(payload);
-          this.color= 'green',
-          this.snackbar = true;
-          this.text = 'Successfully submited..!';
-          this.name = '';
-          this.email = '';
-          this.message = '';
+          (this.color = "green"), (this.snackbar = true);
+          this.text = "Successfully submited..!";
+          this.name = "";
+          this.email = "";
+          this.message = "";
         }
       }
-    }
-    
+    },
   },
 });
 </script>
