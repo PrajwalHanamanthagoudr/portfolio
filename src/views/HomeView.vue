@@ -31,7 +31,7 @@
           </div>
         </v-col>
       </v-row>
-      <v-col>
+      <v-col class="mb-16">
         <v-img
           src="@/assets/t1.png"
           width="500"
@@ -511,6 +511,9 @@ export default defineComponent({
               this.color = "green";
               this.snackbar = true;
               this.text = "Successfully submitted..!";
+              this.name = "";
+              this.email = "";
+              this.message = "";
             });
         }
       }
