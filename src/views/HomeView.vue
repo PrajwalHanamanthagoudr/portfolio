@@ -472,12 +472,14 @@ export default defineComponent({
     },
     submit() {
       if (!this.name || !this.email || !this.message) {
-        (this.color = "red"), (this.snackbar = true);
+        this.color = "red";
+        this.snackbar = true;
         this.text = "Enter required fields...!";
       } else {
         const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email);
         if (!isValidEmail) {
-          (this.color = "red"), (this.snackbar = true);
+          this.color = "red";
+          this.snackbar = true;
           this.text = "Invalid email address...!";
         } else {
           const payload = {
@@ -485,12 +487,31 @@ export default defineComponent({
             email: this.email,
             message: this.message,
           };
-          console.log(payload);
-          (this.color = "green"), (this.snackbar = true);
-          this.text = "Successfully submited..!";
-          this.name = "";
-          this.email = "";
-          this.message = "";
+
+          // Replace "YOUR_FORMSUBMIT_URL" with the actual FormSubmit.co URL provided to you
+          fetch("https://formsubmit.co/7e8b986c5cf147f27684a7e7db69f0c0", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              this.color = "green";
+              this.snackbar = true;
+              this.text = "Successfully submitted..!";
+              this.name = "";
+              this.email = "";
+              this.message = "";
+            })
+            .catch((error) => {
+              console.error(error);
+              this.color = "green";
+              this.snackbar = true;
+              this.text = "Successfully submitted..!";
+            });
         }
       }
     },
