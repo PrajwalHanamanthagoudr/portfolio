@@ -31,7 +31,7 @@
           </div>
         </v-col>
       </v-row>
-      <v-col class="mb-16">
+      <v-col>
         <v-img
           src="@/assets/t1.png"
           width="500"
