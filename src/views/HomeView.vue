@@ -470,6 +470,7 @@ export default defineComponent({
       link.href = "@/assets/r1.pdf";
       link.download = "resume.pdf";
       link.click();
+      
     },
     submit() {
       if (!this.username || !this.email || !this.message) {
