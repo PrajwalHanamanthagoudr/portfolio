@@ -70,8 +70,8 @@
           challenging opportunities to contribute my skills and drive growth in a dynamic
           organization.
         </p>
-        <v-row class="mt-0 text-subtitle-1 font-weight-black">
-          <v-col class="tab relative" @click="showSkills">
+        <v-row class="mt-0 text-subtitle-1 font-weight-black" style="cursor: pointer;">
+          <v-col class="tab relative" @click="showSkills"> 
             Skills
             <v-progress-linear
               v-if="activeTab === 'skills'"

@@ -12,6 +12,8 @@
     "@mdi/font": "5.9.55",
     "@vuestic/ag-grid-theme": "^1.0.3",
     "axios": "^1.6.4",
+    "chart.js": "^4.4.1",
+    "chartjs-adapter-date-fns": "^3.0.0",
     "core-js": "^3.8.3",
     "google-spreadsheet": "^4.1.1",
     "googleapis": "^130.0.0",
