@@ -267,7 +267,7 @@
         <v-text-field
           color="blue"
           label="Your Name*"
-          v-model="name"
+          v-model="username"
           bg-color="#2e2e2e"
           required
         ></v-text-field>
@@ -327,7 +327,7 @@ export default defineComponent({
   },
   data() {
     return {
-      name: "",
+      username: "",
       email: "",
       message: "",
       hideContent: false,
@@ -443,6 +443,7 @@ export default defineComponent({
       snackbar: false,
       text: "",
       color: "",
+      scriptURL: 'https://script.google.com/macros/s/AKfycbwaRsz-u4TeaHl7F1O-2LHe1ZI6hDtovmrtteB_KDnxPjscBOMh0lqUCmNJVG86Jscuzg/exec',
     };
   },
   mounted() {
@@ -471,7 +472,7 @@ export default defineComponent({
       link.click();
     },
     submit() {
-      if (!this.name || !this.email || !this.message) {
+      if (!this.username || !this.email || !this.message) {
         this.color = "red";
         this.snackbar = true;
         this.text = "Enter required fields...!";
@@ -482,42 +483,29 @@ export default defineComponent({
           this.snackbar = true;
           this.text = "Invalid email address...!";
         } else {
-          const payload = {
-            name: this.name,
-            email: this.email,
-            message: this.message,
-          };
-
-          // Replace "YOUR_FORMSUBMIT_URL" with the actual FormSubmit.co URL provided to you
-          fetch("https://formsubmit.co/7e8b986c5cf147f27684a7e7db69f0c0", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
+          const formData = new FormData();
+          formData.append('username', this.username);
+          formData.append('email', this.email);
+          formData.append('message', this.message);
+          
+          fetch(this.scriptURL, {
+            method: 'POST',
+            body: formData
           })
-            .then((response) => response.json())
-            .then((data) => {
-              console.log(data);
-              this.color = "green";
-              this.snackbar = true;
-              this.text = "Successfully submitted..!";
-              this.name = "";
-              this.email = "";
-              this.message = "";
-            })
-            .catch((error) => {
-              console.error(error);
-              this.color = "green";
-              this.snackbar = true;
-              this.text = "Successfully submitted..!";
-              this.name = "";
-              this.email = "";
-              this.message = "";
-            });
+          .then(response => {
+            console.log("Thank you! Your form is submitted successfully."+response);
+            this.color = "green";
+            this.snackbar = true;
+            this.text = "Successfully submitted...!";
+            this.username = ""
+            this.email = ""
+            this.message = ""
+          }).catch(error => console.error('Error!', error.message))
         }
       }
     },
+    
+    
   },
 });
 </script>
